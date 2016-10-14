@@ -1,7 +1,7 @@
 #include "all_tests.hpp"
 
 /* change this to the version of tennis you want to work on */
-#include "tennis2.cc"
+#include "tennis.cc"
 
 #include <cassert>
 
