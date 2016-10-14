@@ -1,5 +1,5 @@
-if (typeof TennisGame2 === "undefined") {
-    var TennisGame2 = require("./TennisGame2.js");
+if (typeof TennisGame === "undefined") {
+    var TennisGame = require("./TennisGame.js");
 }
 
 var allScores = [
@@ -138,6 +138,6 @@ if (typeof window !== "undefined") {
     reporter = getConsoleReporter();
 }
 
-runSuiteOnGame(reporter, TennisGame2, "TennisGame2");
+runSuiteOnGame(reporter, TennisGame, "TennisGame");
 
 reporter.done();
