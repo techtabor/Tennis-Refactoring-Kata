@@ -89,6 +89,12 @@ TennisGame.prototype.getScore = function() {
     return score;
 };
 
+
+/////////////////////////////////////////////////////
+////// do not modify functions below this line //////
+/////////////////////////////////////////////////////
+
+
 TennisGame.prototype.SetP1Score = function(number) {
     var i;
     for (i = 0; i < number; i++) {
