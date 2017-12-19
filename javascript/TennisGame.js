@@ -1,4 +1,4 @@
-// you can modify this, but keep the signature
+// you can modify this, but keep the arguments
 var TennisGame = function(player1Name, player2Name) {
     this.P1point = 0;
     this.P2point = 0;
@@ -10,7 +10,7 @@ var TennisGame = function(player1Name, player2Name) {
     this.player2Name = player2Name;
 };
 
-// you can modify but not rename this function
+// you should modify the internals of this function
 TennisGame.prototype.getScore = function() {
     var score = "";
 
@@ -79,7 +79,7 @@ TennisGame.prototype.getScore = function() {
     if (this.P2point > this.P1point && this.P1point >= 3) {
         score = "Advantage player2";
     }
-
+    
     if (this.P1point >= 4 && this.P2point >= 0 && (this.P1point - this.P2point) >= 2) {
         score = "Win for player1";
     }
@@ -87,6 +87,15 @@ TennisGame.prototype.getScore = function() {
         score = "Win for player2";
     }
     return score;
+};
+
+
+TennisGame.prototype.P1Score = function() {
+    this.P1point++;
+};
+
+TennisGame.prototype.P2Score = function() {
+    this.P2point++;
 };
 
 
@@ -109,13 +118,6 @@ TennisGame.prototype.SetP2Score = function(number) {
     }
 };
 
-TennisGame.prototype.P1Score = function() {
-    this.P1point++;
-};
-
-TennisGame.prototype.P2Score = function() {
-    this.P2point++;
-};
 
 TennisGame.prototype.wonPoint = function(player) {
     if (player === "player1")
@@ -124,7 +126,7 @@ TennisGame.prototype.wonPoint = function(player) {
         this.P2Score();
 };
 
-// do not modify this function
+
 if (typeof window === "undefined") {
     module.exports = TennisGame;
 }
