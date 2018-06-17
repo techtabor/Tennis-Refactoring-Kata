@@ -1,63 +1,101 @@
 // you can modify this, but keep the arguments
 var TennisGame = function(player1Name, player2Name) {
-    this.points = [0, 0];
+    this.P1point = 0;
+    this.P2point = 0;
+
+    this.P1res = "";
+    this.P2res = "";
+
+    this.player1Name = player1Name;
+    this.player2Name = player2Name;
+};
+
+// you should modify the internals of this function
+TennisGame.prototype.getScore = function() {
+    var score = "";
+
+    if (this.P1point === this.P2point && this.P1point < 3) {
+        if (this.P1point === 0)
+            score = "Love";
+        if (this.P1point === 1)
+            score = "Fifteen";
+        if (this.P1point === 2)
+            score = "Thirty";
+        score += "-All";
+    }
+    if (this.P1point === this.P2point && this.P1point > 2)
+        score = "Deuce";
+
+    if (this.P1point > 0 && this.P2point === 0) {
+        if (this.P1point === 1)
+            this.P1res = "Fifteen";
+        if (this.P1point === 2)
+            this.P1res = "Thirty";
+        if (this.P1point === 3)
+            this.P1res = "Forty";
+
+        this.P2res = "Love";
+        score = this.P1res + "-" + this.P2res;
+    }
+    if (this.P2point > 0 && this.P1point === 0) {
+        if (this.P2point === 1)
+            this.P2res = "Fifteen";
+        if (this.P2point === 2)
+            this.P2res = "Thirty";
+        if (this.P2point === 3)
+            this.P2res = "Forty";
+
+        this.P1res = "Love";
+        score = this.P1res + "-" + this.P2res;
+    }
+
+    if (this.P1point > this.P2point && this.P1point < 4) {
+        if (this.P1point === 2)
+            this.P1res = "Thirty";
+        if (this.P1point === 3)
+            this.P1res = "Forty";
+        if (this.P2point === 1)
+            this.P2res = "Fifteen";
+        if (this.P2point === 2)
+            this.P2res = "Thirty";
+        score = this.P1res + "-" + this.P2res;
+    }
+    if (this.P2point > this.P1point && this.P2point < 4) {
+        if (this.P2point === 2)
+            this.P2res = "Thirty";
+        if (this.P2point === 3)
+            this.P2res = "Forty";
+        if (this.P1point === 1)
+            this.P1res = "Fifteen";
+        if (this.P1point === 2)
+            this.P1res = "Thirty";
+        score = this.P1res + "-" + this.P2res;
+    }
+
+    if (this.P1point > this.P2point && this.P2point >= 3) {
+        score = "Advantage player1";
+    }
+
+    if (this.P2point > this.P1point && this.P1point >= 3) {
+        score = "Advantage player2";
+    }
     
-    this.players = [player1Name, player2Name];
+    if (this.P1point >= 4 && this.P2point >= 0 && (this.P1point - this.P2point) >= 2) {
+        score = "Win for player1";
+    }
+    if (this.P2point >= 4 && this.P1point >= 0 && (this.P2point - this.P1point) >= 2) {
+        score = "Win for player2";
+    }
+    return score;
 };
-
-// you should modify but not rename this function
-TennisGame.prototype.getScore = function () {
-
-    if (this.isDraw() && this.points[0] >= 3) {
-
-        return "Deuce";
-
-    } else if (this.isEndGameSituation()) {
-
-        return this.advantagePrefix() + " " + this.nameOfBetterPlayer();
-
-    }
-
-    return this.pointName(0) + "-" + this.pointName(1);
-};
-
-
-TennisGame.prototype.isDraw = function () {
-    return this.points[0] === this.points[1];
-};
-
-TennisGame.prototype.isEndGameSituation = function () {
-    return (this.points[0] >= 4 || this.points[1] >= 4);
-}
-
-TennisGame.prototype.pointName = function (player_id) {
-    if (this.isDraw() && player_id == 1) {
-        return "All";
-    }
-    return ['Love', 'Fifteen', 'Thirty', 'Forty'][this.points[player_id]];
-}
-
-TennisGame.prototype.advantagePrefix = function () {
-    if ((this.points[0] - this.points[1]) === 1 || (this.points[1] - this.points[0]) === 1) {
-        return "Advantage";
-    }
-    return "Win for"
-}
-
-TennisGame.prototype.nameOfBetterPlayer = function () {
-    if (this.points[0] > this.points[1]) {
-        return this.players[0];
-    }
-    return this.players[1];
-}
 
 
 TennisGame.prototype.P1Score = function() {
-    this.points[0]++;
+    this.P1point++;
 };
 
 TennisGame.prototype.P2Score = function() {
-    this.points[1]++;
+    this.P2point++;
 };
 
 
@@ -88,7 +126,7 @@ TennisGame.prototype.wonPoint = function(player) {
         this.P2Score();
 };
 
-// do not modify this function
+
 if (typeof window === "undefined") {
     module.exports = TennisGame;
 }
