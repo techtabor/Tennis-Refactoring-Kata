@@ -6,7 +6,7 @@ The three most important files in this repository:
 - `javascript/TennisTest.js`: code for testing main program
 - `javascript/TennisTest.html`: visualizing test runs for main program
 
-First step: 
+First step: Download repository as ZIP and extract, or if you have git installed,
 
 ```
 git clone https://github.com/techtabor/Tennis-Refactoring-Kata.git
@@ -14,7 +14,7 @@ git clone https://github.com/techtabor/Tennis-Refactoring-Kata.git
 
 Then:
 
-- open `javascript/TennisTest.js` in your browser
+- open `javascript/TennisTest.html` in your browser
 - modify `javascript/TennisGame.js`
 - refresh your browser after every modification (`Ctrl + r` in Chrome on Windows)
 
