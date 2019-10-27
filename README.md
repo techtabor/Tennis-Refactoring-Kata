@@ -24,8 +24,6 @@ Mainly you should modify the internals of the `TennisGame.prototype.getScore` fu
 
 Work in pairs using one laptop.
 
-Work in small steps so that you can reach a working state at all times under 1 minute.
-
 ----------------------------------------------
 
 ### Refactoring
@@ -47,6 +45,8 @@ Programmers spend much more time reading code than writing code so it is really 
 - simplest working and understandable solution
 - clear entry point, gradually more details inside functions
 - shortest is not always the simplest or most understandable
+- you do not have to understand every details before starting to refactor
+- refactor in small steps, never rewrite from scratch
 
 ---------------------------------------------
 
